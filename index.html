@@ -1,448 +1,79 @@
-<!DOCTYPE html>
-<html lang="cs">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Můj první blog</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px;
-            background: linear-gradient(135deg, rgb(4, 9, 102) 0%, rgb(25, 35, 150) 100%);
-            min-height: 100vh;
-            line-height: 1.6;
-        }
-       
-        header {
-            background: linear-gradient(135deg, #d926e3 0%, #b820c7 100%);
-            color: white;
-            padding: 30px;
-            border-radius: 12px;
-            margin-bottom: 30px;
-            box-shadow: 0 8px 16px rgba(217, 38, 227, 0.3);
-            animation: fadeIn 0.8s ease-in;
-        }
-       
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-       
-        h1 {
-            margin: 0 0 15px 0;
-            font-size: 2.5em;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-        
-        h2 {
-            color: #d926e3;
-            margin-bottom: 15px;
-            font-size: 1.8em;
-        }
-        
-        h3 {
-            color: #b820c7;
-            margin-bottom: 10px;
-            font-size: 1.3em;
-        }
-       
-        .content {
-            background-color: rgb(238, 175, 162);
-            padding: 25px;
-            border-radius: 12px;
-            box-shadow: 0 4px 8px rgba(223, 76, 223, 0.4);
-            margin-bottom: 25px;
-            animation: slideIn 0.8s ease-out;
-        }
-        
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateX(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-       
-        .kniha {
-            background-color: rgb(238, 175, 162);
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 4px 8px rgba(223, 76, 223, 0.4);
-            margin-bottom: 25px;
-        }
-        
-        .kniha-popis {
-            margin: 20px 0;
-            padding: 20px;
-            background-color: rgba(255, 255, 255, 0.5);
-            border-radius: 8px;
-            border-left: 4px solid #d926e3;
-        }
-        
-        .stats {
-            display: flex;
-            gap: 20px;
-            margin: 20px 0;
-            flex-wrap: wrap;
-        }
-        
-        .stat-box {
-            flex: 1;
-            min-width: 150px;
-            background-color: rgba(255, 255, 255, 0.6);
-            padding: 15px;
-            border-radius: 8px;
-            text-align: center;
-            transition: transform 0.3s ease;
-        }
-        
-        .stat-box:hover {
-            transform: translateY(-5px);
-        }
-        
-        .stat-number {
-            font-size: 2em;
-            font-weight: bold;
-            color: #d926e3;
-        }
-        
-        .stat-label {
-            color: #666;
-            font-size: 0.9em;
-        }
-       
-        button {
-            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 16px;
-            margin-top: 15px;
-            margin-right: 10px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 6px rgba(52, 152, 219, 0.3);
-        }
-       
-        button:hover {
-            background: linear-gradient(135deg, #2980b9 0%, #21618c 100%);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(52, 152, 219, 0.4);
-        }
-        
-        button:active {
-            transform: translateY(0);
-        }
-       
-        .output {
-            margin-top: 20px;
-            padding: 20px;
-            background-color: #99dadc;
-            border-radius: 8px;
-            display: none;
-            animation: fadeIn 0.5s ease-in;
-            border-left: 4px solid #3498db;
-        }
-        
-        .output.show {
-            display: block;
-        }
-        
-        .hodnoceni {
-            display: flex;
-            gap: 10px;
-            margin: 15px 0;
-            align-items: center;
-        }
-        
-        .star {
-            font-size: 2em;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            color: #ddd;
-        }
-        
-        .star:hover,
-        .star.active {
-            color: #f39c12;
-            transform: scale(1.2);
-        }
-        
-        .komentare {
-            margin-top: 30px;
-        }
-        
-        .komentar {
-            background-color: rgba(255, 255, 255, 0.6);
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 15px;
-            border-left: 3px solid #d926e3;
-        }
-        
-        .komentar-autor {
-            font-weight: bold;
-            color: #d926e3;
-            margin-bottom: 5px;
-        }
-        
-        textarea {
-            width: 100%;
-            padding: 10px;
-            border-radius: 8px;
-            border: 2px solid #d926e3;
-            font-family: inherit;
-            margin-top: 10px;
-            resize: vertical;
-        }
-        
-        footer {
-            text-align: center;
-            color: white;
-            padding: 20px;
-            margin-top: 30px;
-            opacity: 0.8;
-        }
-    </style>
-</head>
-<body>
-    <header>
-        <h1>✨ Uvítací stránka ✨</h1>
-        <p style="font-size: 1.2em; margin-bottom: 10px;">Tohle je můj první blog</p>
-        <p>Vítám vás na své stránce. Doufám, že se vám tu bude líbit a že se zase brzy vrátíte.</p>
-    </header>
-   
-    <div class="kniha">
-        <h2>📖 Láska letní noci</h2>
-        <p style="font-style: italic; color: #666; margin-bottom: 20px;">Příběh, který se zrodil ze snů</p>
-        
-        <div class="kniha-popis">
-            <h3>O knize</h3>
-            <p>Ponořte se do knihy, která je plná romantiky, splněných snů, ale i napínavých okamžiků....</p>
-            <p style="margin-top: 10px;">V každé kapitole čeká nové dobrodružství, nové přátelství a především , romantický vztah.</p>
-        </div>
-        
-        <div class="stats">
-            <div class="stat-box">
-                <div class="stat-number">106</div>
-                <div class="stat-label">stran</div>
-            </div>
-            <div class="stat-box">
-                <div class="stat-number">12</div>
-                <div class="stat-label">kapitol</div>
-            </div>
-            <div class="stat-box">
-                <div class="stat-number">4.8</div>
-                <div class="stat-label">hodnocení</div>
-            </div>
-        </div>
-        
-        <h3>Ohodnoťte knihu:</h3>
-        <div class="hodnoceni" id="hodnoceni">
-            <span class="star" data-value="1">★</span>
-            <span class="star" data-value="2">★</span>
-            <span class="star" data-value="3">★</span>
-            <span class="star" data-value="4">★</span>
-            <span class="star" data-value="5">★</span>
-            <span id="hodnoceni-text" style="margin-left: 10px; color: #666;"></span>
-        </div>
-        
-        <button onclick="zobrazitUkazku()">📚 Zobrazit ukázku</button>
-        <button onclick="zobrazitRecenze()">💬 Přečíst recenze</button>
-        
-        <div class="output" id="ukazka">
-            <h3>Ukázka z první kapitoly</h3>
-        
-            <p>Stál u okna. Vysoký muž, s blonďatými vlasy a očima modrýma jako to nejmodřejší nebe. Stál u okna dlouho a přemýšlel. Během příštího měsíce mělo začít natáčení jeho dalšího filmu a on ještě pořád nevěděl, kdo bude jeho filmovou partnerkou.</p>
+<div class="output" id="ukazka">
+            <h3>Ukázka z Kapitoly 1 – Neznámá v dešti</h3>
             
-            <p>Znervózňovalo ho to. Už, už se chtěl otočit od okna, když v tom... ji spatřil. Stála u velkého keře s růžemi a koukala se na něj do okna. Nevěděl přesně, co má dělat, ale nohy, jako by samy od sebe se rozběhly ke dveřím, vedoucím na schody.</p>
+            <div id="stranka-1" class="stranka">
+                <p style="text-align: center; font-style: italic; color: #666; margin-bottom: 20px;">--- Strana 1 ---</p>
             
-            <p>Seběhl dolů rychle a dveřmi hned ven do zahrady, ale u keře už nikdo nebyl.</p>
-            
-            <p>„Co se děje, Michaeli? Proč ten běh?"</p>
-            
-            <p>„Nevím Johne. Myslel jsem, že něco vidím, ale asi se mi to jen zdálo."</p>
-            
-            <p>„A co to bylo?"</p>
-            
-            <p>„Dívka," zněla odpověď.</p>
-            
-            <p>„Vážně? To zase byla asi jedna z těch tvých fanynek. Ty holky jsou opravdu neodbytný a pěkně vlezlý. Nechám to tady zkontrolovat ochrankou."</p>
-            
-            <p>„Ne Johne. Nech to být. Jdu spát, jsem z toho všeho šíleně nervózní a unavený. Stejně už je pryč," odvětil Michael.</p>
-            
-            <p>V duchu ale na tu neznámou musel myslet. Byla něčím zvláštní, nebyla jako ostatní. Toho večera usínal Michael s velice smíšenými pocity.</p>
-            
-            <p>Ráno, hned po snídani, vyšel Michael opět do zahrady a zamířil si to k růžovému keři. A našel tam kousek látky.</p>
-            
-            <p>„Ale to je z jejích šatů. Ty měla přece včera na sobě. Chci vědět, kdo to je. Zajímá mě to víc a více."</p>
-            
-            <p>„Tak pojď, Michaeli. Musíme jet."</p>
-            
-            <p>„Jasně Johne. Už jdu."</p>
-            
-            <p>Když nasedali do auta, povídá Michael Johnovi:</p>
-            
-            <p>„Hele Johne, dneska si zajdu do klubu. Potřebuji se nějak odreagovat. Tak se půjdu pobavit."</p>
-            
-            <p>„A který máš na mysli?" zeptal se John.</p>
-            
-            <p>„Bridge. Ten na Holy bulváru."</p>
-            
-            <p>„Ok. Ale já jdu s tebou. Beze mně ani na krok. Však to znáš."</p>
-            
-            <p>„Jasný Johne. Jako vždycky."</p>
-            
-            <p>Ani jeden si při rozhovoru nevšimnul, že sedím potají, kousek od nich, schovaná v keřích a slyším každé slovo. Umínila jsem si, že se do toho klubu podívám. Ten klub znám a mám tam pár dobrých známých, kteří mě tam vždycky pustí, ať je tam jakákoliv známá osobnost.</p>
-            
-            <p>Počkala jsem, až auto odjede, a poté jsem proběhla zahradou, přeskočila plot a jela do práce."</p>
+                <p>Letní večer voněl vlhkou zemí a čerstvě posekanou trávou, dokud se nespustil déšť – najednou a prudce, jako by se nebe roztrhlo. Kapky bubnovaly do okenních tabulí jako netrpělivé prsty žádající vstup.</p>
 
-            <p>Po cestě jsem se trochu zamyslela. ,,Ano, byla jsem to já včera  v zahradě a já dnes položila kousek látky na onen růžový keř."</p>
-            
-            <p>Michael byl mým idolem už od studentských leta když umřel můj manžel, řekla jsem si, že  ho najdu, A tak jsem se se svou malou dcerkou a kamarádkou vydala do Ameriky.</p>
-        </div>
-        
-        <div class="output" id="recenze">
-            <h3>Co říkají čtenáři:</h3>
-            <div class="komentar">
-                <div class="komentar-autor">⭐⭐⭐⭐⭐ Jana K.</div>
-                <p>Docela zajímavý začátek.</p>
-            </div>
-            <div class="komentar">
-                <div class="komentar-autor">⭐⭐⭐⭐⭐ Petr M.</div>
-                <p>Úžasná fantazie ale je to reálné?</p>
-            </div>
-            <div class="komentar">
-                <div class="komentar-autor">⭐⭐⭐⭐ Lucie S.</div>
-                <p>Moc hezký letní příběh. Škoda, že je to jen začátek! Bude pokračování?</p>
-            </div>
-        </div>
-    </div>
-    
-    <div class="content">
-        <h2>💭 Zanechte svůj komentář</h2>
-        <p>Přečetli jste si začátek příběhu? Podělte se o svůj názor s ostatními čtenáři!</p>
-        <textarea id="komentar-text" rows="4" placeholder="Napište svůj komentář zde..."></textarea>
-        <button onclick="pridatKomentar()">Odeslat komentář</button>
-        
-        <div class="komentare" id="komentare"></div>
-    </div>
-    
-    <footer>
-        <p>© 2024 Můj první blog | Vytvořeno s láskou k příběhům ❤️</p>
-    </footer>
+                <p>Michael stál u okna svého pokoje v prvním patře ranče, ruce opřené o parapet, pohled ztracený v tmě. Byl vysoký, široký v ramenou, s blond vlasy padající do čela v lehce neupravených pramenech. Oči měl modré – opravdu modré, jako pomněnky po dešti, když slunce ještě prosvítá skrz mraky. Tělo vytvarované dlouhými lety na koni, prací na ranči a hodinami v posilovně. Ne proto, že by to vyžadoval film. Ale proto, že to byl jeho způsob, jak udržet klid v hlavě, když se svět točil příliš rychle.</p>
 
-    <script>
-        let ukazkaZobrazena = false;
-        let recenzeZobrazeny = false;
-        let hodnoceni = 0;
-        
-        function zobrazitUkazku() {
-            const ukazka = document.getElementById('ukazka');
-            ukazkaZobrazena = !ukazkaZobrazena;
+                <p>Přemýšlel o zítřku. Natáčení začínalo v šest ráno – první scény jen s ním, bez herečky. Režisér trval na obsazení neznámé tváře do hlavní ženské role. Žádná celebrita z billboardů, žádná hvězda s milionem sledujících. Konkurz proběhl před týdnem a Michael viděl desítky děvčat. Hezké, talentované, některé až příliš sebevědomé. Ale žádná mu nesedla.</p>
+
+                <p>Cítil to v kostech – ta pravá tam nebyla.</p>
+
+                <p><em>Potřebuju někoho, kdo bude mít v sobě oheň, ale zároveň ticho. Někoho, kdo roli nebude hrát, ale žít.</em></p>
+
+                <button onclick="zobrazitStranku(2)" style="margin-top: 20px;">📖 Další strana</button>
+            </div>
             
-            if (ukazkaZobrazena) {
-                ukazka.classList.add('show');
-            } else {
-                ukazka.classList.remove('show');
-            }
-        }
-        
-        function zobrazitRecenze() {
-            const recenze = document.getElementById('recenze');
-            recenzeZobrazeny = !recenzeZobrazeny;
-            
-            if (recenzeZobrazeny) {
-                recenze.classList.add('show');
-            } else {
-                recenze.classList.remove('show');
-            }
-        }
-        
-        const stars = document.querySelectorAll('.star');
-        const hodnoceniText = document.getElementById('hodnoceni-text');
-        
-        stars.forEach(star => {
-            star.addEventListener('click', function() {
-                hodnoceni = parseInt(this.getAttribute('data-value'));
-                updateStars();
+            <div id="stranka-2" class="stranka" style="display: none;">
+                <p style="text-align: center; font-style: italic; color: #666; margin-bottom: 20px;">--- Strana 2 ---</p>
                 
-                const texty = [
-                    '',
-                    'Slabé',
-                    'Průměrné',
-                    'Dobré',
-                    'Výborné',
-                    'Skvělé!'
-                ];
-                hodnoceniText.textContent = texty[hodnoceni];
-            });
+                <p>Vzpomněl si na Elizabeth.</p>
+
+                <p>Dlouhé tmavé vlasy, smích schopný zaplnit celou místnost, talent, který ho vždycky ohromil. Po jednom natáčení se dali dohromady – bylo to jako z filmu: večerní procházka po pláži, první polibek pod hvězdami, dlouhé noci plné smíchu a plánů.</p>
+
+                <p>Pak přišly hádky. Malé na začátku. Velké později.</p>
+
+                <p>Vyčítala mu uzavřenost, on jí impulzivnost. Nakonec se to rozpadlo – ne dramaticky, ale pomalu, jako když se roztrhne starý provaz. Miloval ji, hluboko někde uvnitř. Ale věděl, že spolu nemohou být.</p>
+
+                <p>Tak to nechali být.</p>
+
+                <p>Když teď na ni myslel, ucítil v hrudi tupou bolest – ne zlomené srdce, spíš stesk po tom, co mohlo být.</p>
+
+                <p>Zavřel oči a zhluboka se nadechl. Déšť zesílil, vítr hnal kapky šikmo proti sklu. Chtěl se otočit, jít spát. Ale něco ho přimělo zůstat.</p>
+
+                <p>A pak ji uviděl.</p>
+
+                <p>Stála v zahradě přímo pod starým dubem asi deset metrů od domu. Bez hnutí. Déšť ji smáčel, vlasy se lepily na tvář, šaty přilepené k tělu. Stála tam jako socha, kterou někdo zapomněl schovat před bouří.</p>
+                
+                <div style="display: flex; gap: 10px; margin-top: 20px;">
+                    <button onclick="zobrazitStranku(1)">⬅️ Předchozí</button>
+                    <button onclick="zobrazitStranku(3)">📖 Další strana</button>
+                </div>
+            </div>
             
-            star.addEventListener('mouseenter', function() {
-                const value = parseInt(this.getAttribute('data-value'));
-                highlightStars(value);
-            });
-        });
-        
-        document.getElementById('hodnoceni').addEventListener('mouseleave', function() {
-            updateStars();
-        });
-        
-        function highlightStars(count) {
-            stars.forEach((star, index) => {
-                if (index < count) {
-                    star.classList.add('active');
-                } else {
-                    star.classList.remove('active');
-                }
-            });
-        }
-        
-        function updateStars() {
-            highlightStars(hodnoceni);
-        }
-        
-        function pridatKomentar() {
-            const text = document.getElementById('komentar-text').value;
-            if (text.trim() === '') {
-                alert('Prosím, napište nejdřív svůj komentář.');
-                return;
-            }
-            
-            const komentare = document.getElementById('komentare');
-            const novyKomentar = document.createElement('div');
-            novyKomentar.className = 'komentar';
-            
-            const hvezdicky = '⭐'.repeat(hodnoceni > 0 ? hodnoceni : 0);
-            
-            novyKomentar.innerHTML = `
-                <div class="komentar-autor">${hvezdicky} Vy - Právě teď</div>
-                <p>${text}</p>
-            `;
-            
-            komentare.insertBefore(novyKomentar, komentare.firstChild);
-            document.getElementById('komentar-text').value = '';
-            
-            alert('Děkujeme za váš komentář!');
-        }
-    </script>
-</body>
-</html>
+            <div id="stranka-3" class="stranka" style="display: none;">
+                <p style="text-align: center; font-style: italic; color: #666; margin-bottom: 20px;">--- Strana 3 ---</p>
+                
+                <p>Zamrkal. Zavřel oči pevně, počítal do tří.</p>
+
+                <p>Když je otevřel, pořád tam byla.</p>
+
+                <p>Srdce mu bušilo rychleji. Nikdy nic takového necítil – ten zvláštní tah, jako by ho něco táhlo ven, přímo k ní. Cítil teplo vyzařující od jejího těla navzdory dešti a vzdálenosti. Jako by se ho dotýkala, aniž by se dotkla.</p>
+
+                <p><em>To není možné. Tohle není jen dívka. To je... něco jiného.</em></p>
+
+                <p>„Kdo jsi?" zašeptal do tmy.</p>
+
+                <p>Pak se otočil a vyběhl z pokoje. Seběhl po schodech tak rychle, že mu boty klouzaly po dřevě. Venku ho udeřil studený vzduch a déšť do tváře. Proběhl kolem verandy, zabočil za roh—</p>
+
+                <p>Zahrada byla prázdná.</p>
+
+                <p>Nikde nikdo. Jen mokrá tráva, kapky stékající z listů a ticho přerušované deštěm.</p>
+
+                <p>„Kde je?" řekl nahlas. Hlas se mu lámal.</p>
+
+                <p>„Michaeli, co to tu děláš?"</p>
+
+                <p>Janův hlas za ním. Přítel stál na verandě v tričku a teplákách, vlasy rozcuchané od spánku, v ruce baterie. „Vždyť se nachladíš. Proč jsi tak letěl po schodech? Myslel jsem, že se ti něco stalo."</p>
+                
+                <div style="display: flex; gap: 10px; margin-top: 20px;">
+                    <button onclick="zobrazitStranku(2)">⬅️ Předchozí</button>
+                </div>
+                
+                <p style="text-align: center; font-style: italic; color: #2E86DE; margin-top: 30px; font-weight: bold;">Pokračování následuje... 📚</p>
+                <p style="text-align: center; color: #666; margin-top: 10px;">Chcete si přečíst celou knihu? Kontaktujte mě!</p>
+            </div>
+        </div>
