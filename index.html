@@ -3,227 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Můj první blog</title>
+    <title>Můj první blog - Láska letní noci</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px;
+            max-width: 900px; margin: 0 auto; padding: 20px;
             background: linear-gradient(135deg, rgb(4, 9, 102) 0%, rgb(25, 35, 150) 100%);
-            min-height: 100vh;
-            line-height: 1.6;
+            min-height: 100vh; line-height: 1.6;
         }
-       
         header {
             background: linear-gradient(135deg, #2E86DE 0%, #1B6BB8 100%);
-            color: white;
-            padding: 30px;
-            border-radius: 12px;
-            margin-bottom: 30px;
+            color: white; padding: 30px; border-radius: 12px; margin-bottom: 30px;
             box-shadow: 0 8px 16px rgba(46, 134, 222, 0.3);
             animation: fadeIn 0.8s ease-in;
         }
-       
         @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-       
-        h1 {
-            margin: 0 0 15px 0;
-            font-size: 2.5em;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        h1 { margin: 0 0 15px 0; font-size: 2.5em; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+        h2 { color: #2E86DE; margin-bottom: 15px; font-size: 1.8em; }
+        h3 { color: #1B6BB8; margin-bottom: 10px; font-size: 1.3em; }
+        .content, .kniha {
+            background-color: rgb(238, 175, 162); padding: 25px; border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(46, 134, 222, 0.4); margin-bottom: 25px;
         }
-        
-        h2 {
-            color: #2E86DE;
-            margin-bottom: 15px;
-            font-size: 1.8em;
-        }
-        
-        h3 {
-            color: #1B6BB8;
-            margin-bottom: 10px;
-            font-size: 1.3em;
-        }
-       
-        .content {
-            background-color: rgb(238, 175, 162);
-            padding: 25px;
-            border-radius: 12px;
-            box-shadow: 0 4px 8px rgba(46, 134, 222, 0.4);
-            margin-bottom: 25px;
-            animation: slideIn 0.8s ease-out;
-        }
-        
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateX(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-       
-        .kniha {
-            background-color: rgb(238, 175, 162);
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 4px 8px rgba(46, 134, 222, 0.4);
-            margin-bottom: 25px;
-        }
-        
         .kniha-popis {
-            margin: 20px 0;
-            padding: 20px;
-            background-color: rgba(255, 255, 255, 0.5);
-            border-radius: 8px;
-            border-left: 4px solid #2E86DE;
+            margin: 20px 0; padding: 20px; background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 8px; border-left: 4px solid #2E86DE;
         }
-        
-        .stats {
-            display: flex;
-            gap: 20px;
-            margin: 20px 0;
-            flex-wrap: wrap;
-        }
-        
+        .stats { display: flex; gap: 20px; margin: 20px 0; flex-wrap: wrap; }
         .stat-box {
-            flex: 1;
-            min-width: 150px;
-            background-color: rgba(255, 255, 255, 0.6);
-            padding: 15px;
-            border-radius: 8px;
-            text-align: center;
-            transition: transform 0.3s ease;
+            flex: 1; min-width: 150px; background-color: rgba(255, 255, 255, 0.6);
+            padding: 15px; border-radius: 8px; text-align: center; transition: transform 0.3s ease;
         }
-        
-        .stat-box:hover {
-            transform: translateY(-5px);
-        }
-        
-        .stat-number {
-            font-size: 2em;
-            font-weight: bold;
-            color: #2E86DE;
-        }
-        
-        .stat-label {
-            color: #666;
-            font-size: 0.9em;
-        }
-       
+        .stat-box:hover { transform: translateY(-5px); }
+        .stat-number { font-size: 2em; font-weight: bold; color: #2E86DE; }
+        .stat-label { color: #666; font-size: 0.9em; }
         button {
             background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 16px;
-            margin-top: 15px;
-            margin-right: 10px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 6px rgba(52, 152, 219, 0.3);
+            color: white; border: none; padding: 12px 25px; border-radius: 8px;
+            cursor: pointer; font-size: 16px; margin: 5px;
+            transition: all 0.3s ease; box-shadow: 0 4px 6px rgba(52, 152, 219, 0.3);
         }
-       
         button:hover {
             background: linear-gradient(135deg, #2980b9 0%, #21618c 100%);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(52, 152, 219, 0.4);
+            transform: translateY(-2px); box-shadow: 0 6px 12px rgba(52, 152, 219, 0.4);
         }
-        
-        button:active {
-            transform: translateY(0);
-        }
-       
         .output {
-            margin-top: 20px;
-            padding: 20px;
-            background-color: #99dadc;
-            border-radius: 8px;
-            display: none;
-            animation: fadeIn 0.5s ease-in;
-            border-left: 4px solid #3498db;
+            margin-top: 20px; padding: 25px; background-color: #99dadc;
+            border-radius: 8px; display: none; border-left: 4px solid #3498db;
+            max-height: 600px; overflow-y: auto;
         }
-        
-        .output.show {
-            display: block;
+        .output.show { display: block; animation: fadeIn 0.5s ease-in; }
+        .output p { margin-bottom: 15px; text-align: justify; }
+        .output em { font-style: italic; color: #1B6BB8; }
+        .kapitola-nadpis {
+            text-align: center; color: #1B6BB8; font-size: 1.5em;
+            margin: 30px 0 20px 0; padding-bottom: 10px;
+            border-bottom: 2px solid rgba(46, 134, 222, 0.3);
         }
-        
-        .stranka {
-            display: none;
+        .oddelovac {
+            text-align: center; margin: 30px 0; color: #2E86DE; font-size: 1.5em;
         }
-        
-        .hodnoceni {
-            display: flex;
-            gap: 10px;
-            margin: 15px 0;
-            align-items: center;
+        .page-nav {
+            position: sticky; top: 0; background: rgba(255, 255, 255, 0.95);
+            padding: 15px; border-radius: 8px; margin-bottom: 20px;
+            display: flex; justify-content: space-between; align-items: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1); z-index: 10;
         }
-        
+        .hodnoceni { display: flex; gap: 10px; margin: 15px 0; align-items: center; }
         .star {
-            font-size: 2em;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            color: #ddd;
+            font-size: 2em; cursor: pointer; transition: all 0.2s ease; color: #ddd;
         }
-        
-        .star:hover,
-        .star.active {
-            color: #f39c12;
-            transform: scale(1.2);
-        }
-        
-        .komentare {
-            margin-top: 30px;
-        }
-        
+        .star:hover, .star.active { color: #f39c12; transform: scale(1.2); }
         .komentar {
-            background-color: rgba(255, 255, 255, 0.6);
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 15px;
-            border-left: 3px solid #2E86DE;
+            background-color: rgba(255, 255, 255, 0.6); padding: 15px;
+            border-radius: 8px; margin-bottom: 15px; border-left: 3px solid #2E86DE;
         }
-        
-        .komentar-autor {
-            font-weight: bold;
-            color: #2E86DE;
-            margin-bottom: 5px;
-        }
-        
+        .komentar-autor { font-weight: bold; color: #2E86DE; margin-bottom: 5px; }
         textarea {
-            width: 100%;
-            padding: 10px;
-            border-radius: 8px;
-            border: 2px solid #2E86DE;
-            font-family: inherit;
-            margin-top: 10px;
-            resize: vertical;
+            width: 100%; padding: 10px; border-radius: 8px;
+            border: 2px solid #2E86DE; font-family: inherit; margin-top: 10px; resize: vertical;
         }
-        
         footer {
-            text-align: center;
-            color: white;
-            padding: 20px;
-            margin-top: 30px;
-            opacity: 0.8;
+            text-align: center; color: white; padding: 20px; margin-top: 30px; opacity: 0.8;
+        }
+        .konec-kapitoly {
+            text-align: center; font-style: italic; color: #2E86DE;
+            margin: 30px 0; font-weight: bold;
         }
     </style>
 </head>
@@ -241,7 +110,7 @@
         <div class="kniha-popis">
             <h3>O knize</h3>
             <p>Ponořte se do knihy, která je plná romantiky, splněných snů, ale i napínavých okamžiků....</p>
-            <p style="margin-top: 10px;">V každé kapitole čeká nové dobrodružství, nové přátelství a především , romantický vztah.</p>
+            <p style="margin-top: 10px;">V každé kapitole čeká nové dobrodružství, nové přátelství a především, romantický vztah.</p>
         </div>
         
         <div class="stats">
@@ -269,87 +138,275 @@
             <span id="hodnoceni-text" style="margin-left: 10px; color: #666;"></span>
         </div>
         
-        <button onclick="zobrazitUkazku()">📚 Zobrazit ukázku</button>
+        <button onclick="zobrazitUkazku()">📚 Číst Kapitoly 1-2 (kompletní)</button>
         <button onclick="zobrazitRecenze()">💬 Přečíst recenze</button>
         
         <div class="output" id="ukazka">
-            <h3>Ukázka z Kapitoly 1 – Neznámá v dešti</h3>
-            
-            <div id="stranka-1" class="stranka">
-                <p style="text-align: center; font-style: italic; color: #666; margin-bottom: 20px;">--- Strana 1 ---</p>
-            
-                <p>Letní večer voněl vlhkou zemí a čerstvě posekanou trávou, dokud se nespustil déšť – najednou a prudce, jako by se nebe roztrhlo. Kapky bubnovaly do okenních tabulí jako netrpělivé prsty žádající vstup.</p>
-
-                <p>Michael stál u okna svého pokoje v prvním patře ranče, ruce opřené o parapet, pohled ztracený v tmě. Byl vysoký, široký v ramenou, s blond vlasy padající do čela v lehce neupravených pramenech. Oči měl modré – opravdu modré, jako pomněnky po dešti, když slunce ještě prosvítá skrz mraky. Tělo vytvarované dlouhými lety na koni, prací na ranči a hodinami v posilovně. Ne proto, že by to vyžadoval film. Ale proto, že to byl jeho způsob, jak udržet klid v hlavě, když se svět točil příliš rychle.</p>
-
-                <p>Přemýšlel o zítřku. Natáčení začínalo v šest ráno – první scény jen s ním, bez herečky. Režisér trval na obsazení neznámé tváře do hlavní ženské role. Žádná celebrita z billboardů, žádná hvězda s milionem sledujících. Konkurz proběhl před týdnem a Michael viděl desítky děvčat. Hezké, talentované, některé až příliš sebevědomé. Ale žádná mu nesedla.</p>
-
-                <p>Cítil to v kostech – ta pravá tam nebyla.</p>
-
-                <p><em>Potřebuju někoho, kdo bude mít v sobě oheň, ale zároveň ticho. Někoho, kdo roli nebude hrát, ale žít.</em></p>
-
-                <button onclick="zobrazitStranku(2)" style="margin-top: 20px;">📖 Další strana</button>
+            <div class="page-nav">
+                <button onclick="scrollNahoru()">⬆️ Nahoru</button>
+                <span style="color: #666; font-weight: bold;">📖 Kapitoly 1-2</span>
+                <button onclick="zavritUkazku()">❌ Zavřít</button>
             </div>
             
-            <div id="stranka-2" class="stranka">
-                <p style="text-align: center; font-style: italic; color: #666; margin-bottom: 20px;">--- Strana 2 ---</p>
-                
-                <p>Vzpomněl si na Elizabeth.</p>
-
-                <p>Dlouhé tmavé vlasy, smích schopný zaplnit celou místnost, talent, který ho vždycky ohromil. Po jednom natáčení se dali dohromady – bylo to jako z filmu: večerní procházka po pláži, první polibek pod hvězdami, dlouhé noci plné smíchu a plánů.</p>
-
-                <p>Pak přišly hádky. Malé na začátku. Velké později.</p>
-
-                <p>Vyčítala mu uzavřenost, on jí impulzivnost. Nakonec se to rozpadlo – ne dramaticky, ale pomalu, jako když se roztrhne starý provaz. Miloval ji, hluboko někde uvnitř. Ale věděl, že spolu nemohou být.</p>
-
-                <p>Tak to nechali být..</p>
-
-                <p>Když teď na ni myslel, ucítil v hrudi tupou bolest – ne zlomené srdce, spíš stesk po tom, co mohlo být.</p>
-
-                <p>Zavřel oči a zhluboka se nadechl. Déšť zesílil, vítr hnal kapky šikmo proti sklu. Chtěl se otočit, jít spát. Ale něco ho přimělo zůstat.</p>
-
-                <p>A pak ji uviděl.</p>
-
-                <p>Stála v zahradě přímo pod starým dubem asi deset metrů od domu. Bez hnutí. Déšť ji smáčel, vlasy se lepily na tvář, šaty přilepené k tělu. Stála tam jako socha, kterou někdo zapomněl schovat před bouří.</p>
-                
-                <div style="display: flex; gap: 10px; margin-top: 20px;">
-                    <button onclick="zobrazitStranku(1)">⬅️ Předchozí</button>
-                    <button onclick="zobrazitStranku(3)">📖 Další strana</button>
-                </div>
-            </div>
+            <div class="kapitola-nadpis">Kapitola 1 – Neznámá v dešti</div>
             
-            <div id="stranka-3" class="stranka">
-                <p style="text-align: center; font-style: italic; color: #666; margin-bottom: 20px;">--- Strana 3 ---</p>
-                
-                <p>Zamrkal. Zavřel oči pevně, počítal do tří.</p>
+            <p>Letní večer voněl vlhkou zemí a čerstvě posekanou trávou, dokud se nespustil déšť – najednou a prudce, jako by se nebe roztrhlo. Kapky bubnovaly do okenních tabulí jako netrpělivé prsty žádající vstup.</p>
 
-                <p>Když je otevřel, pořád tam byla.</p>
+            <p>Michael stál u okna svého pokoje v prvním patře ranče, ruce opřené o parapet, pohled ztracený v tmě. Byl vysoký, široký v ramenou, s blond vlasy padající do čela v lehce neupravených pramenech. Oči měl modré – opravdu modré, jako pomněnky po dešti, když slunce ještě prosvítá skrz mraky. Tělo vytvarované dlouhými lety na koni, prací na ranči a hodinami v posilovně. Ne proto, že by to vyžadoval film. Ale proto, že to byl jeho způsob, jak udržet klid v hlavě, když se svět točil příliš rychle.</p>
 
-                <p>Srdce mu bušilo rychleji. Nikdy nic takového necítil – ten zvláštní tah, jako by ho něco táhlo ven, přímo k ní. Cítil teplo vyzařující od jejího těla navzdory dešti a vzdálenosti. Jako by se ho dotýkala, aniž by se dotkla.</p>
+            <p>Přemýšlel o zítřku. Natáčení začínalo v šest ráno – první scény jen s ním, bez herečky. Režisér trval na obsazení neznámé tváře do hlavní ženské role. Žádná celebrita z billboardů, žádná hvězda s milionem sledujících. Konkurz proběhl před týdnem a Michael viděl desítky děvčat. Hezké, talentované, některé až příliš sebevědomé. Ale žádná mu nesedla.</p>
 
-                <p><em>To není možné. Tohle není jen dívka. To je... něco jiného.</em></p>
+            <p>Cítil to v kostech – ta pravá tam nebyla.</p>
 
-                <p>„Kdo jsi?" zašeptal do tmy.</p>
+            <p><em>Potřebuju někoho, kdo bude mít v sobě oheň, ale zároveň ticho. Někoho, kdo roli nebude hrát, ale žít.</em></p>
 
-                <p>Pak se otočil a vyběhl z pokoje. Seběhl po schodech tak rychle, že mu boty klouzaly po dřevě. Venku ho udeřil studený vzduch a déšť do tváře. Proběhl kolem verandy, zabočil za roh—</p>
+            <p>Vzpomněl si na Elizabeth.</p>
 
-                <p>Zahrada byla prázdná.</p>
+            <p>Dlouhé tmavé vlasy, smích schopný zaplnit celou místnost, talent, který ho vždycky ohromil. Po jednom natáčení se dali dohromady – bylo to jako z filmu: večerní procházka po pláži, první polibek pod hvězdami, dlouhé noci plné smíchu a plánů.</p>
 
-                <p>Nikde nikdo. Jen mokrá tráva, kapky stékající z listů a ticho přerušované deštěm.</p>
+            <p>Pak přišly hádky. Malé na začátku. Velké později.</p>
 
-                <p>„Kde je?" řekl nahlas. Hlas se mu lámal.</p>
+            <p>Vyčítala mu uzavřenost, on jí impulzivnost. Nakonec se to rozpadlo – ne dramaticky, ale pomalu, jako když se roztrhne starý provaz. Miloval ji, hluboko někde uvnitř. Ale věděl, že spolu nemohou být.</p>
 
-                <p>„Michaeli, co to tu děláš?"</p>
+            <p>Tak to nechali být.</p>
 
-                <p>Janův hlas za ním. Přítel stál na verandě v tričku a teplákách, vlasy rozcuchané od spánku, v ruce baterie. „Vždyť se nachladíš. Proč jsi tak letěl po schodech? Myslel jsem, že se ti něco stalo."</p>
-                
-                <div style="display: flex; gap: 10px; margin-top: 20px;">
-                    <button onclick="zobrazitStranku(2)">⬅️ Předchozí</button>
-                </div>
-                
-                <p style="text-align: center; font-style: italic; color: #2E86DE; margin-top: 30px; font-weight: bold;">Pokračování následuje... 📚</p>
-                <p style="text-align: center; color: #666; margin-top: 10px;">Chcete si přečíst celou knihu? Kontaktujte mě!</p>
-            </div>
+            <p>Když teď na ni myslel, ucítil v hrudi tupou bolest – ne zlomené srdce, spíš stesk po tom, co mohlo být.</p>
+
+            <p>Zavřel oči a zhluboka se nadechl. Déšť zesílil, vítr hnal kapky šikmo proti sklu. Chtěl se otočit, jít spát. Ale něco ho přimělo zůstat.</p>
+
+            <p>A pak ji uviděl.</p>
+
+            <p>Stála v zahradě přímo pod starým dubem asi deset metrů od domu. Bez hnutí. Déšť ji smáčel, vlasy se lepily na tvář, šaty přilepené k tělu. Stála tam jako socha, kterou někdo zapomněl schovat před bouří.</p>
+
+            <p>Zamrkal. Zavřel oči pevně, počítal do tří.</p>
+
+            <p>Když je otevřel, pořád tam byla.</p>
+
+            <p>Srdce mu bušilo rychleji. Nikdy nic takového necítil – ten zvláštní tah, jako by ho něco táhlo ven, přímo k ní. Cítil teplo vyzařující od jejího těla navzdory dešti a vzdálenosti. Jako by se ho dotýkala, aniž by se dotkla.</p>
+
+            <p><em>To není možné. Tohle není jen dívka. To je... něco jiného.</em></p>
+
+            <p>„Kdo jsi?" zašeptal do tmy.</p>
+
+            <p>Pak se otočil a vyběhl z pokoje. Seběhl po schodech tak rychle, že mu boty klouzaly po dřevě. Venku ho udeřil studený vzduch a déšť do tváře. Proběhl kolem verandy, zabočil za roh—</p>
+
+            <p>Zahrada byla prázdná.</p>
+
+            <p>Nikde nikdo. Jen mokrá tráva, kapky stékající z listů a ticho přerušované deštěm.</p>
+
+            <p>„Kde je?" řekl nahlas. Hlas se mu lámal.</p>
+
+            <p>„Michaeli, co to tu děláš?"</p>
+
+            <p>Janův hlas za ním. Přítel stál na verandě v tričku a teplákách, vlasy rozcuchané od spánku, v ruce baterie. „Vždyť se nachladíš. Proč jsi tak letěl po schodech? Myslel jsem, že se ti něco stalo."</p>
+
+            <p>„Viděl jsem někoho v zahradě. Dívku. Stála tam... přímo tamhle pod dubem."</p>
+
+            <p>Jan přišel blíž a posvítil stejným směrem. „Teď tam nikdo není. Možná se ti to zdálo. Nebo to byla nějaká fanynka, co se proplížila přes plot." Odmlčel se. „Ale v tomhle dešti? To by musela být fakt odhodlaná."</p>
+
+            <p>„Nebyla to fanynka." Michael to řekl tiše, skoro pro sebe. „Byla... jiná. Stála tam úplně klidně. Jako by čekala. Na mě."</p>
+
+            <p>Jan si povzdechl. V očích mu probleskla starost. „Víš, co si myslím? Že je to ten konkurz. Jsi nervózní, protože nevíš, s kým budeš točit. Tak všude vidíš holky." Pokrčil rameny. „A k tomu ty fanynky, co tě pronásledují..."</p>
+
+            <p>„Ne. Byla tam. A psi by to přece měli cítit, ne?"</p>
+
+            <p>„Tak pojď, projdeme to spolu." Jan položil ruku na jeho rameno. „Pro tvůj klid – a pro můj taky."</p>
+
+            <p>Prošli zahradu. Déšť jim stékal za límec, boty se topily v blátě. U zdi našli otisk – malý, ženský, čerstvý.</p>
+
+            <p>Pak nic. Stopa končila u zdi.</p>
+
+            <p>„Přelezla." Jan to řekl překvapeně, skoro s obdivem. „Opravdu přelezla. To není normální fanynka. To je někdo, kdo opravdu chtěl být tady. A riskoval hodně."</p>
+
+            <p>Michael mlčel. V hlavě mu pořád stála ta dívka – mokrá, nehybná, tajemná. Něco v něm se probudilo. Něco, co dlouho spalo.</p>
+
+            <div class="oddelovac">* * *</div>
+
+            <p>Vrátili se dovnitř. Michael si uvařil kávu, i když věděl, že neusne. Seděl u stolu v kuchyni, díval se do hrnku.</p>
+
+            <p>Jan si nalil taky a posadil se naproti. „Tak pověz – jak vypadala?"</p>
+
+            <p>„Menší. Světlé vlasy, mokré." Michael zvedl oči. „Ne hezká v tom klasickém smyslu... ale měla v sobě něco. Tajemství. Kuráž." Odmlčel se. „Něco, co mě chytlo za srdce. Jako by věděla, kdo jsem – a přesto přišla."</p>
+
+            <p>Jan se lehce usmál, ale nebyla v tom legrace. Spíš soucit. „To zní jako začátek filmu. Ale vážně – myslím, že ji už neuvidíš. Kdo by to riskoval znovu?"</p>
+
+            <p>„Já bych riskoval." Michael to řekl ticho, skoro nečekaně sám pro sebe.</p>
+
+            <p>Jan zvedl obočí. „Ty jsi do ní fakt propadl, co? Po jednom pohledu v dešti?"</p>
+
+            <p>Michael neodpověděl. Jen dopil kávu, zvedl se a šel nahoru.</p>
+
+            <p>Ale věděl jedno: tu dívku chce najít. Ať to stojí, co to stojí.</p>
+
+            <p>Když ležel v posteli a poslouchal déšť bubnující do střechy, cítil v sobě podivný klid. Poprvé po dlouhé době se nebál zítřka.</p>
+
+            <p>Protože něco mu říkalo, že ta neznámá v dešti je teprve začátek.</p>
+
+            <div class="oddelovac">* * *</div>
+
+            <p>Ještě chvíli přemýšlel o všem, co se stalo – dívce, o touze, která mu narušila klid. Ale spánek nakonec převážil. Usnul hlubokým spánkem, jako když ho do vody hodí. Sny mu splétaly obrazy mokrých vlasů a nehybné siluety pod dubem.</p>
+
+            <p>Ráno po snídani vyšel do zahrady sám. Slunce už vysušilo trávu, vzduch voněl čerstvostí a zemí. Jan ještě dojedával v kuchyni. Michael zamířil přímo k starému dubu a procházel místo kousek po kousku – hledal cokoli. Stopu, znamení, odpověď.</p>
+
+            <p>A pak to našel.</p>
+
+            <p>Na keři visel malý kousek látky – jemný, lehce vlhký, s tou neodolatelnou vůní růží. Přivoněl si k němu a srdce mu poskočilo.</p>
+
+            <p><em>To je z jejích šatů. Měla je včera na sobě. A ta vůně... růže, sladká, čistá. Nikdo na ranči takovou nepoužívá.</em></p>
+
+            <p>Přistihl se, že na ni myslí víc, než by si přiznal. Ne jako na fanynku. Jako na záhadu, která mu změnila noc.</p>
+
+            <p>„Michaeli! Musíme jet!"</p>
+
+            <p>Janův hlas ho vytrhl ze zamyšlení. Vrátil se před dům a ukázal látku příteli.</p>
+
+            <p>„To je její, Jano. Takové šaty měla."</p>
+
+            <p>Jan si to prohlédl, přivoněl, přikývl. „No, když to říkáš... Ale teď už fakt musíme. Režisér na nás čeká."</p>
+
+            <p>„Dobře. Ale dnes večer se jdu trochu vyvětrat. Zajdu si do Bridge. Už dlouho jsem nebyl mezi normálními lidmi. Ty večírky bohatých mě unavují."</p>
+
+            <p>„Fajn." Jan se usmál. „To potřebuješ. Mám jít s tebou?"</p>
+
+            <p>„Ne, díky. Chci být chvíli sám."</p>
+
+            <p>Nasedli do auta a odjeli.</p>
+
+            <p>Nikdo z nich si nevšiml, že kousek od nich, za keřem, sedím já a slyším každé slovo.</p>
+
+            <p>Počkala jsem, až se vše uklidní. Pak jsem vyšla, přehoupla se přes nejnižší část zdi, nasedla do taxíku a spěchala do studia. Chtěla jsem tam být dřív než oni.</p>
+
+            <p>A povedlo se.</p>
+
+            <p>Byla jsem to já – včera v zahradě, dnes ráno s tou látkou na keři. Věděla jsem, že ji najde. A když jsem slyšela „Bridge", umínila jsem si: tam se setkáme.</p>
+
+            <p>Jeho hlas v mé hlavě utichl, jakmile jsem si to slíbila.</p>
+
+            <p>Vystoupila jsem z taxíku a postavila se k bráně studia tak, aby mě bylo vidět z přijíždějícího auta – ale zároveň abych se ztratila v davu.</p>
+
+            <p>Nemusela jsem čekat dlouho.</p>
+
+            <p>Jejich auto se objevilo, proráželo davem fanoušků. Najednou zastavilo. Michael vyskočil, rozhlížel se. Oči plné touhy a zmatku.</p>
+
+            <p>„Co se děje, Michaeli? Proč tak vyvádíš?" slyšela jsem Jana.</p>
+
+            <p>„Myslím, že jsem ji tu zahlédl." Michaelův hlas se třásl. „Od včerejška ji vidím všude. Už asi blázním."</p>
+
+            <p>Jan vystoupil a položil mu ruku na rameno. „Ty jsi nervózní z konkurzu. Vidíš duchy. Nemysli na to. Celou cestu jsi nemluvil. Co je s tebou?" Odmlčel se. „Kdybych tě neznal, řekl bych, že jsi zamilovaný. Ale do koho? Do neznámé dívky, kterou jsi viděl jen jednou, na okamžik?" Zavrtěl hlavou. „Věříš vážně na lásku na první pohled? To je nesmysl... nebo ano?"</p>
+
+            <p>„Máš pravdu." Michael to přiznal po chvíli, ale v očích mu zůstala ta jiskra. „Jen si něco nalhávám. Pojedeme dál."</p>
+
+            <p>Nasedl zpátky.</p>
+
+            <p>Kdyby Jan věděl, jak se mýlí. Stála jsem kousek od nich a slyšela všechno. Ta slova o lásce na první pohled mi vykřesala v srdci naději.</p>
+
+            <div class="konec-kapitoly">~ Konec kapitoly 1 ~</div>
+            
+            <div class="kapitola-nadpis">Kapitola 2 – Setkání u brány</div>
+            
+            <p>Byla jsem vdova. Manžel odešel příliš brzy, zanechal mi jen vzpomínky a malou Terezu. Doma mě nic nedrželo – žádná rodina, žádní přátelé, kteří by mě podrželi.</p>
+
+            <p>Tak jsme si s Tinou a Terkou sbalily věci a utekly do Ameriky. Utekly od všeho – od smutku, od minulosti, od pocitu prázdnoty. Hledaly jsme nový začátek, nový život, kde bychom mohly dýchat svobodněji.</p>
+
+            <p>Vydělávaly jsme si jako prodavačky v malém obchodě s oblečením. Moc to nevynášelo, ale stačilo na jídlo, nájem, oblečení pro malou. Každý den byl bojem. Ale byl to náš boj, plný naděje.</p>
+
+            <p>Anglicky nás naučila Jana – taky Češka, která se sem přestěhovala před lety. Možná nám pomáhala právě proto, že se jí stýskalo po domově. Její lekce byly plné tepla, smíchu a příběhů z Prahy, které nám pomáhaly necítit se tak osamělé.</p>
+
+            <p>Ale zrovna teď jsem stála za kamerami v tom rušném studiu a dívala se na Michaela. Přemýšlela o všem, co se stalo – o dešti v zahradě, o kousku látky na keři, o jeho hlase v mé hlavě.</p>
+
+            <p>Ani jsem si neuvědomila, že si mě všiml.</p>
+
+            <p>Blížil se ke mně krok za krokem. Viděla jsem to příliš pozdě. Srdce mi bušilo jako splašené. Zkusila jsem utéct, ale on mě chytil za ruku – pevně, ale ne hrubě.</p>
+
+            <p>Podívala jsem se na něj, oči plné strachu i touhy.</p>
+
+            <p>„Prosím, pusťte mě," zašeptala jsem.</p>
+
+            <p>Místo odpovědi se zeptal: „Kdo jste? Co tu děláte?"</p>
+
+            <p>Hlas měl hluboký, plný zvědavosti a něčeho, co jsem nedokázala pojmenovat.</p>
+
+            <p>Zadívala jsem se mu do očí – ty modré pomněnky, které jsem milovala z filmů. Po chvíli jsem musela uhnout pohledem stranou. Nemohla jsem snést ten intenzivní pohled, který mě propaloval až do duše.</p>
+
+            <p>Zmohla jsem se jen na chvějivé: „Já... já nevím..."</p>
+
+            <p>Najednou povolil sevření. Vytrhla jsem se mu a utíkala pryč mezi kabely a lidmi. Pustil se za mnou. Po chvíli mě znovu chytil – tentokrát jemněji, jako by se bál, že mě ztratí navždy.</p>
+
+            <p>„Prosím, pusťte mě."</p>
+
+            <p>Pustil. Pak se zeptal: „Mohu vás někam pozvat? Nebo alespoň – kde vás najdu?"</p>
+
+            <p>Jen jsem zakroutila hlavou. Srdce mi bušilo jako bubny. Pomalu jsem odcházela.</p>
+
+            <p>Michael svěsil hlavu. Vypadal zklamaně, skoro ztraceně.</p>
+
+            <p>To mě zabolelo. Otočila jsem se a zavolala: „Dnes večer v Bridge."</p>
+
+            <p>Zvedl hlavu. Překvapeně otevřel ústa, jako by chtěl něco říct – ale já už byla pryč, mizela v davu. Srdce plné vzrušení i strachu.</p>
+
+            <div class="oddelovac">* * *</div>
+
+            <p>Šla jsem na autobus, který mě zavedl do města. Musela jsem do práce – obchod čekal. Přišla jsem právě včas. Tina už byla za pultem, usmívala se na mě.</p>
+
+            <p>Řekla jsem jí všechno. O setkání v studiu, o tom, jak mě chytil, o slovech „Dnes večer v Bridge". Zeptala jsem se, jestli by mi večer pohlídala malou.</p>
+
+            <p>Tina se zasmála. „Nemáš se mě na to ani ptát! Je to jasný – jdi, užij si to. Přeju ti jen to nejlepší. Ať ti vyjde všechno tak, jak si přeješ."</p>
+
+            <p>Poděkovala jsem jí, rychle ji objala. Šly jsme pracovat – skládat zboží, radit zákazníkům, smát se maličkostem, které nám zpříjemňovaly den.</p>
+
+            <p>Když jsme skončily, musely jsme ještě nakoupit – chleba, mléko, ovoce pro malou. Teprve pak jsme jely domů.</p>
+
+            <p>Jana nám vařila, starala se o Terezku, když jsme byly v práci nebo když nebyla ve školce. Byla to naše andělská strážkyně – s teplým úsměvem a příběhy z Čech, které nám pomáhaly necítit se tak daleko od domova.</p>
+
+            <p>Dojely jsme domů kolem tří odpoledne. Nemohla jsem se dočkat večera.</p>
+
+            <p>Diskotéka Bridge začínala v osm, ale rozhodla jsem se, že tam budu dřív – překvapím ho, uvidím jeho reakci, když mě spatří.</p>
+
+            <p>Zbytek dne uběhl rychleji, než jsem čekala. Najednou bylo šest hodin.</p>
+
+            <p>Vykoupala jsem Terezku, dala jí najíst – její oblíbenou polévku od Jany – a nachystala ji na spaní. Malá byla unavená, usnula hned. S úsměvem na tváři.</p>
+
+            <p>Sama jsem si vlezla do vany, napustila teplou vodu s pěnou. Relaxovala – teď to potřebovala víc než kdy jindy. Po deseti minutách jsem vylezla, utřela se, natřela tělovým mlékem s vanilkovou vůní.</p>
+
+            <p>Velice pomalu jsem se oblékla – bílé rifle, bílý nátělník, na to fialová halenka zastrčená dovnitř, ale rozepnutá. Na krk jsem si pověsila stříbrný řetízek s křížkem a znamením vodnáře. Přinášel mi štěstí, byl to můj talisman.</p>
+
+            <p>Nakonec jsem se stříkla parfémem s vůní růží – tou samou, kterou jsem měla v zahradě.</p>
+
+            <p>Zadívala jsem se na hodiny. Půl sedmé.</p>
+
+            <p>Uložila jsem Terezku, řekla jí: „Poslouchej tetu Tinu." Hned usnula, unavená z celého dne.</p>
+
+            <p>Teď si mě vzala do parády Tina – natočila mi vlasy do jemných vln, nalíčila mě lehce, ale elegantně. Když jsem se podívala do zrcadla, skoro jsem se nepoznala. Vypadala jsem sebevědomě, krásně, připravená.</p>
+
+            <p>Oblékla jsem si ještě bílou riflovou bundu, vzala peníze a vyrazila.</p>
+
+            <div class="oddelovac">* * *</div>
+
+            <p>Autobus zastavil přímo před lokálem Bridge. Když jsem otvírala dveře, ruce se mi třásly nervozitou.</p>
+
+            <p>Vešla jsem.</p>
+
+            <p>V lokále zatím moc lidí nebylo – ticho, jen lehká hudba v pozadí. Všimla jsem si volného místa u baru, sedla si tam a objednala drink – něco osvěžujícího, aby mi pomohl uklidnit nervy.</p>
+
+            <p>Bylo třičtvrtě na osm. Lokál se začal plnit lidmi – smích, hudba zesílila. Michael tu ještě nebyl. Začala jsem mít strach.</p>
+
+            <p><em>Co když nepřijde? Co když si to rozmyslel?</em></p>
+
+            <p>Minuty ubíhaly pomalu, čas se vlekl jako med. Jakmile odbila osmá, diskotéka se rozjela na plné obrátky – světla blikala, hudba duněla, lidi tančili.</p>
+
+            <p>Objednala jsem si druhý drink. Když jsem se chtěla napít, přišel za mnou nějaký mladík. „Nešla bys tančit?"</p>
+
+            <p>Přikývla jsem. Sundala bundu, nechala ji u barmana a šla na parket. Byli jsme v tom nejlepším – hudba pulsovala, tělo se hýbalo samo. Pak jsem dostala žízeň, šla k baru a dopila svůj drink.</p>
+
+            <p>Ty dva drinky mě rozpálily, uvolnily. Vrátila jsem se na parket, tančila s radostí, ztracena v rytmu.</p>
+
+            <p>Ani jsem si nevšimla, že do lokálu vešel Michael. Rozhlédl se, spatřil mě – a zamířil přímo ke mně.</p>
+
+            <p>Neviděla jsem ho, zabraná do tance. Když začali hrát pomalou písničku, chtěla jsem se vrátit k baru. Jenomže jsem nedošla – někdo mě chytil zezadu za rameno. Pevně, ale s velkou žádostí.</p>
+
+            <div class="konec-kapitoly">~ Pokračování následuje... ~</div>
+            
+            <p style="text-align: center; margin-top: 30px; color: #1B6BB8; font-weight: bold;">📚 Chcete si přečíst celou knihu? Kontaktujte mě! 📧</p>
         </div>
         
         <div class="output" id="recenze">
@@ -375,7 +432,7 @@
         <textarea id="komentar-text" rows="4" placeholder="Napište svůj komentář zde..."></textarea>
         <button onclick="pridatKomentar()">Odeslat komentář</button>
         
-        <div class="komentare" id="komentare"></div>
+        <div id="komentare" style="margin-top: 30px;"></div>
     </div>
     
     <footer>
@@ -386,20 +443,6 @@
         let ukazkaZobrazena = false;
         let recenzeZobrazeny = false;
         let hodnoceni = 0;
-        let aktualniStranka = 1;
-        
-        function zobrazitStranku(cislo) {
-            // Skrýt všechny stránky
-            document.querySelectorAll('.stranka').forEach(s => s.style.display = 'none');
-            // Zobrazit vybranou stránku
-            const stranka = document.getElementById('stranka-' + cislo);
-            if (stranka) {
-                stranka.style.display = 'block';
-                aktualniStranka = cislo;
-                // Plynulý přechod nahoru
-                stranka.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-            }
-        }
         
         function zobrazitUkazku() {
             const ukazka = document.getElementById('ukazka');
@@ -407,10 +450,21 @@
             
             if (ukazkaZobrazena) {
                 ukazka.classList.add('show');
-                zobrazitStranku(1);
+                ukazka.scrollIntoView({ behavior: 'smooth', block: 'start' });
             } else {
                 ukazka.classList.remove('show');
             }
+        }
+        
+        function zavritUkazku() {
+            const ukazka = document.getElementById('ukazka');
+            ukazka.classList.remove('show');
+            ukazkaZobrazena = false;
+        }
+        
+        function scrollNahoru() {
+            const ukazka = document.getElementById('ukazka');
+            ukazka.scrollTop = 0;
         }
         
         function zobrazitRecenze() {
@@ -492,4 +546,4 @@
         }
     </script>
 </body>
-</html>
+</html
